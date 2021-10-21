@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<robot name="STH030E-500_robot">
+    <!-- base link -->
+    <kinbody>
+        <mass>
+            <total>13.052</total>
+        </mass>
+        <body name="base_link" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffuseColor>0.8 0.8 0.8</diffuseColor>
+                <render>meshes/STH030E-500/base_link.STL 0.001</render>
+                <collision>meshes/STH030E-500/base_link.STL 0.001</collision>
+            </geom>
+        </body>
+    </kinbody>
+
+    <!-- link 1 -->
+    <kinbody>
+        <mass>
+            <total>6.041</total>
+        </mass>
+        <body name="link1" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffuseColor>0.8 0.8 0.8</diffuseColor>
+                <render>meshes/STH030E-500/link_1.STL 0.001</render>
+                <collision>meshes/STH030E-500/link_1.STL 0.001</collision>
+            </geom>
+            <offsetfrom>base_link</offsetfrom>
+            <translation>0.03 0 0.19</translation>
+        </body>
+        <joint name="j1" type="hinge">
+            <body>base_link</body>
+            <body>link1</body>
+            <limitsdeg>-130 130</limitsdeg>
+            <axis>0 0 1</axis>
+            <maxveldeg>360</maxveldeg>
+            <maxacceldeg>1800</maxacceldeg>
+            <offsetfrom>link1</offsetfrom>
+            <resolution>1</resolution>
+        </joint>
+    </kinbody>
+
+    <!-- Link 2 -->
+    <kinbody>
+        <mass>
+            <total>16.062</total>
+        </mass>
+        <body name="link2" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffuseColor>0.8 0.8 0.8</diffuseColor>
+		        <render>meshes/STH030E-500/link_2.STL 0.001</render>
+                <collision>meshes/STH030E-500/link_2.STL 0.001</collision>
+            </geom>
+            <offsetfrom>link1</offsetfrom>
+            <translation>0.25 0 0</translation>
+        </body>
+        <joint name="j2" type="hinge">
+            <body>link1</body>
+            <body>link2</body>
+            <limitsdeg>-141 141</limitsdeg>
+            <axis>0 0 1</axis>
+            <maxveldeg>300</maxveldeg>
+            <maxacceldeg>1500</maxacceldeg>
+            <offsetfrom>link2</offsetfrom>
+            <resolution>1</resolution>
+        </joint>
+    </kinbody>
+
+    <!-- Link 3 -->
+    <kinbody>
+        <mass>
+            <total>10.781</total>
+        </mass>
+        <body name="link3" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffusecolor>0.8 0.8 0.8</diffusecolor>
+		        <render>meshes/STH030E-500/link_3.STL 0.001</render>
+                <collision>meshes/STH030E-500/link_3.STL 0.001</collision>
+            </geom>
+            <offsetfrom>link2</offsetfrom>
+            <translation>0.250 0 -0.003</translation>
+        </body>
+        <joint name="j3" type="hinge">
+            <body>link2</body>
+            <body>link3</body>
+            <limitsdeg>-360 360</limitsdeg>
+            <axis>0 0 1</axis>
+            <maxveldeg>378.75</maxveldeg>
+	    <maxacceldeg>1900</maxacceldeg>
+            <offsetfrom>link3</offsetfrom>
+            <resolution>1</resolution>
+        </joint>
+    </kinbody>
+
+    <!-- Link 4 -->
+    <kinbody>
+        <mass>
+            <total>10.781</total>
+        </mass>
+        <body name="link4" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffusecolor>0.8 0.8 0.8</diffusecolor>
+		        <render>meshes/STH030E-500/link_4.STL 0.001</render>
+                <collision>meshes/STH030E-500/link_4.STL 0.001</collision>
+            </geom>
+            <offsetfrom>link3</offsetfrom>
+            <translation>0 0 0.29</translation>
+        </body>
+        <joint name="j4" type="slider">
+            <body>link3</body>
+            <body>link4</body>
+            <axis>0 0 -1</axis>
+	    <limits>0 0.25</limits>
+	    <maxvel>10</maxvel>
+            <offsetfrom>link4</offsetfrom>
+        </joint>
+    </kinbody>
+<!-- Attach the gripper to the robot -->
+    <Kinbody>
+        <body name="gripper">
+        <geom type="trimesh" modifiable="true">
+                <diffusecolor>0.8 0.8 0.8</diffusecolor>
+		        <render>Simple_3Point_Gripper.STL 0.001</render>
+                <collision>Simple_3Point_Gripper.STL 0.001</collision>
+            </geom>
+        <offsetfrom>link4</offsetfrom>
+        <translation> 0 0 -0.457</translation>
+        <rotationaxis>1 0 0 90</rotationaxis>
+        </body>
+        <joint name="joint_scara_gripper" type="hinge" enable="false">
+        <body>link4</body>
+        <body>gripper</body>
+        <limits>0 0</limits>
+        </joint>
+    </Kinbody>
+  
+  <!-- Define the manipulator -->
+    <Manipulator name="gripper">
+        <base>base_link</base>  
+        <effector>gripper</effector>
+        <translation>0 -0.058 0</translation>
+    </Manipulator>
+</robot>

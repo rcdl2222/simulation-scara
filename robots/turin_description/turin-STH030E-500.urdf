@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<robot name="Turin_SCARA">
+
+<link name="base_link">
+  <collision>
+    <origin xyz="0 0 0.050" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/base_link.dae" scale=".001 .001 .001" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0.050" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/base_link.dae" scale=".001 .001 .001" />
+    </geometry>
+  </visual>
+</link>
+
+<joint name="J1" type="revolute">
+  <parent link="base_link"/>
+  <child link="link_1"/>
+  <origin xyz="0.030 0 .2104"/>
+  <axis xyz="0 0 1" />
+  <limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+</joint>
+
+<link name="link_1">
+  <collision>
+    <origin xyz="0 0 0.032" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_1.dae" scale=".001 .001 .001" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0.032" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_1.dae" scale=".001 .001 .001" />
+    </geometry>
+  </visual>
+</link>
+
+<joint name="J2" type="revolute">
+  <parent link="link_1"/>
+  <child link="link_2"/>
+  <origin xyz="0.250 0 0.032"/>
+  <axis xyz="0 0 1" />
+  <limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+</joint>
+
+<link name="link_2">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_2.dae" scale=".001 .001 .001" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_2.dae" scale=".001 .001 .001" />
+    </geometry>
+  </visual>
+</link>
+
+<joint name="J3" type="prismatic">
+  <parent link="link_2"/>
+  <child link="link_3"/>
+  <origin xyz="0.250 0 -0.003"/>
+  <axis xyz="0 0 1" />
+  <limit effort="300" velocity="0.1" lower="-0.150" upper="0"/>
+</joint>
+
+<link name="link_3">
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_3.dae" scale=".001 .001 .001" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_3.dae" scale=".001 .001 .001" />
+    </geometry>
+  </visual>
+</link>
+
+<joint name="J4" type="revolute">
+  <parent link="link_3"/>
+  <child link="link_4"/>
+  <origin xyz="0 0 -0.072"/>
+  <axis xyz="0 0 1" />
+  <limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+</joint>
+
+<link name="link_4">
+  <collision>
+    <origin xyz="0 0 0.3697" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_4.dae" scale=".001 .001 .001" />
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0.3697" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://turin_description/meshes/STH030E-500/link_4.dae" scale=".001 .001 .001" />
+    </geometry>
+  </visual>
+</link>
+
+</robot>

@@ -1,0 +1,23 @@
+<Environment>
+  <robot file="../robots/turin_description/STH030E-500.robot.xml" name="robot">
+    <translation>0 0 0</translation>
+  </robot>
+  <robot file="../robots/gripper/inspection_gripper.robot.xml" name="inspection_gripper">
+    <translation>0.255 -0.455 -0.184</translation>
+    <rotationaxis>1 0 0 90</rotationaxis>
+    <rotationaxis>0 0 1 -90</rotationaxis>
+  </robot>
+  <Kinbody name="setup">
+  <body name="mesh">
+    <geom type="trimesh">
+      <translation>-0.095 -0.75 -0.21</translation>
+      <rotationaxis>1 0 0 90</rotationaxis>
+      <rotationaxis>0 0 1 90</rotationaxis>
+      <render>../objects/Assem1.STL 0.001</render>
+      <collision>../objects/Assem1.STL  0.001</collision>
+      <diffusecolor>1 1 1</diffusecolor>
+    </geom>
+  </body>
+  </Kinbody>
+  
+</Environment>
