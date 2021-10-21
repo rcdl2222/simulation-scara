@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<robot name="inspection_gripper">
+    <!-- base link -->
+    <kinbody>
+        <mass>
+            <total>0.02</total>
+        </mass>
+        <body name="base_link" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffuseColor>0.8 0.8 0.8</diffuseColor>
+                <render>inspection_gripper_base.STL 0.001</render>
+                <collision>inspection_gripper_base.STL 0.001</collision>
+            </geom>
+        </body>
+    </kinbody>
+
+    <!-- link 1 -->
+    <kinbody>
+        <mass>
+            <total>0.05</total>
+        </mass>
+        <body name="link1" type="dynamic">
+            <geom type="trimesh" modifiable="true">
+                <diffuseColor>0.8 0.8 0.8</diffuseColor>
+                <render>inspection_gripper_link1.STL 0.001</render>
+                <collision>inspection_gripper_link1.STL 0.001</collision>
+            </geom>
+            <offsetfrom>base_link</offsetfrom>
+            <translation>0 0 0.001</translation>
+        </body>
+        <joint name="j1" type="hinge">
+            <body>base_link</body>
+            <body>link1</body>
+            <axis>0 0 1</axis>
+            <maxveldeg>360</maxveldeg>
+            <maxacceldeg>1800</maxacceldeg>
+            <offsetfrom>link1</offsetfrom>
+            <resolution>1</resolution>
+        </joint>
+    </kinbody>
+    <Manipulator name="inspection_gripper">
+        <base>base_link</base>  
+        <effector>link1</effector>
+        <translation>0 0 0.048</translation>
+    </Manipulator>
+</robot>

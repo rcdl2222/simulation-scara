@@ -1,0 +1,11 @@
+<KinBody name='3point_gripper'>
+
+    <body name = 'gripper'>
+      <translation>0 0 0.2</translation>
+      <Geom type="trimesh" modifiable="true">
+        <render>Simple_3Point_Gripper.STL 0.001</render>
+        <collision>Simple_3Point_Gripper.STL 0.001</collision>
+      </Geom>
+    </body>
+
+</KinBody>

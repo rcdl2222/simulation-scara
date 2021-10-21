@@ -1,0 +1,5 @@
+<Environment>
+    <Robot file="../robots/gripper/inspection_gripper.robot.xml" name="inspection_gripper">
+    <translation>0 0 0</translation>
+    </Robot>
+</Environment>

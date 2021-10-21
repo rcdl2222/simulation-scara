@@ -1,0 +1,12 @@
+<!-- lens is 10mm wide, 1mm thick -->
+<KinBody name="lens">
+  <Body name="lens" type="dynamic">
+    <Geom type="cylinder">
+      <translation>0 0 0.0025</translation>
+      <rotationaxis>1 0 0 90</rotationaxis>
+      <radius>0.01</radius>
+      <height>0.005</height>
+      <diffuseColor>1 0 0</diffuseColor>
+    </Geom>
+  </Body>
+</KinBody>
